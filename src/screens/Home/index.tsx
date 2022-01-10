@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 import { Button } from '../../components/Button';
+import '../../styles/styles.css';
 import { api } from '../../services/api';
 import { 
     Container, 
@@ -12,7 +13,8 @@ import {
     ContentSort,
     InputSort,
     LoadingStyle,
-    ButtonComponent
+    ButtonComponent,
+    Error
 } from './styles';
 
 export function Home(){
@@ -20,6 +22,9 @@ export function Home(){
     const [number, setNumber] = useState<any | number>(0);
     const [loading, setLoading] = useState(false);
     const [disabled, setDisabled] = useState(true);
+    const [errorRequest, setErrorRequest] = useState(false);
+    const [disabledForm, setDisabledForm] = useState(false);
+    const [userError, setUserError] = useState(false);
     
     useEffect(() => {
         if(numberInpt !== ''){
@@ -42,7 +47,10 @@ export function Home(){
             console.log(response.data.value);
             setLoading(false);
         }, error => {
+            setErrorRequest(true);
+            setDisabledForm(true);
             setLoading(false);
+            console.log(error)
         });
     }
     
@@ -60,7 +68,14 @@ export function Home(){
                 <Divider />
             </Header>
             <Content>
-                <Number>{number}</Number>
+                {
+                    errorRequest ? 
+                    <>
+                        <Error>ERRO</Error>
+                        <Number className={errorRequest || userError ? 'erroNumber' : ''}>502</Number>
+                    </>
+                    : <Number>{number}</Number>
+                }
                 <ContentSort>
                     <form onSubmit={handleValueInput}>
                         <InputSort 
@@ -68,9 +83,6 @@ export function Home(){
                             type="number" 
                             onChange={event => setNumberInpt(event.target.value)}
                         />
-                        {/* <Button
-                            type="submit"
-                        >Enviar</Button> */}
                         <ButtonComponent
                             type="submit"
                             disabled={disabled}

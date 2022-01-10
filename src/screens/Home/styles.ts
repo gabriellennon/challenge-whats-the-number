@@ -84,3 +84,11 @@ export const LoadingStyle = styled.div`
     text-align: center;
     margin: 40px auto;
 `;
+
+export const Error = styled.p`
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    color: #CC3300;
+`;
