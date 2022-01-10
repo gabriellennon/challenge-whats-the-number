@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PropTypes from 'prop-types';
 
 export const Container = styled.header`
     margin: 0 auto;
@@ -48,4 +49,38 @@ export const InputSort = styled.input`
     padding: 14px 12px;
 `;
 
-export const ButtonComponent = styled.button``;
+export const ButtonComponent = styled.button`
+    background: linear-gradient(180deg, #EF6C00 0%, #C0661C 100%);
+    border-radius: 4px;
+    border: none;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFFFFF;
+    padding: 14px;
+    transition: filter 0.2s;
+        
+    &:hover{
+        cursor: pointer;
+        filter: brightness(0.9);
+    }
+
+    &:hover:not(.disabled),
+    &:active:not(.disabled),
+
+    &:disabled {
+        opacity: 0.6;
+        filter: saturate(60%);
+    }
+`;
+
+ButtonComponent.propTypes = {
+    disabled: PropTypes.bool,
+    children: PropTypes.node,
+};
+
+export const LoadingStyle = styled.div`
+    text-align: center;
+    margin: 40px auto;
+`;
