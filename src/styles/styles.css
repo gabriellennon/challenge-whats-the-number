@@ -1,3 +1,7 @@
 .erroNumber {
-    color: red !important;
+    color: #CC3300 !important;
+}
+
+.userSuccess {
+    color: #32BF00 !important;
 }

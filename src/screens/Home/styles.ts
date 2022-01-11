@@ -47,7 +47,20 @@ export const InputSort = styled.input`
     box-sizing: border-box;
     border-radius: 4px;
     padding: 14px 12px;
+
+    &:hover:not(.disabled),
+    &:active:not(.disabled),
+
+    &:disabled {
+        opacity: 0.6;
+        filter: saturate(60%);
+    }
 `;
+
+InputSort.propTypes = {
+    disabled: PropTypes.bool,
+    children: PropTypes.node,
+};
 
 export const ButtonComponent = styled.button`
     background: linear-gradient(180deg, #EF6C00 0%, #C0661C 100%);
@@ -91,4 +104,34 @@ export const Error = styled.p`
     font-weight: bold;
     font-size: 18px;
     color: #CC3300;
+`;
+
+export const NewMatch = styled.button`
+    background: linear-gradient(180deg, #434854 0%, #9E9E9E 100%);
+    border-radius: 4px;
+    border: none;
+    text-transform: uppercase;
+    transition: filter 0.2s;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFFFFF;
+    padding: 14px 10px;
+        
+    &:hover{
+        cursor: pointer;
+        filter: brightness(0.9);
+    }
+
+    svg{
+        margin-right: 6px;
+    }
+`;
+
+export const DescriptionUser = styled.p`
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    color: #FF6600;
 `;
