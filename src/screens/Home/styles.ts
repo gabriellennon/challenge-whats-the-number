@@ -13,7 +13,7 @@ export const Content = styled.div`
 export const Header = styled.div`
     text-align: center;
     margin-top: 44px;
-    padding: 0 289px;
+    padding: 0;
 `;
 
 export const Title = styled.h1`
@@ -26,6 +26,7 @@ export const Title = styled.h1`
 
 export const Divider = styled.hr`
     border: 1px solid #CFCFCF;
+    width: 80%;
 `;
 
 export const Number = styled.h2`
